@@ -15,7 +15,7 @@ const multer = require('multer')
 const flash = require('connect-flash')
 
 const mongoDbStore = new mongoDbSession({
-    uri : process.env.MONGODB_URL,
+    uri : process.env.MONGODB_URI,
     collection : 'sessions'
 })
 

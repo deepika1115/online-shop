@@ -5,7 +5,7 @@ const MongoClient = mongodb.MongoClient;
 let _db;
 
 const mongoConnect = callback => {
-    MongoClient.connect(process.env.MONGODB_CONNECT_URL).then(client =>{
+    MongoClient.connect(process.env.MONGODB_URI).then(client =>{
         console.log("connected")
         _db = client.db();
         callback();
