@@ -37,11 +37,14 @@ exports.getIndex = (req, res, next) => {
 
 exports.getCart = (req, res, next) => {
   req.user.getCart().then(products => {
-    if(products.length > 1){
-      totalPrice = products.reduce((a,b) => {return (+a.price * a.quantity) + (+b.price * b.quantity)});
-    }else{
-      totalPrice = products[0].price * products[0].quantity;
-    }
+    let totalPrice = 0;
+    if(products.length){
+      if(products.length > 1){
+        totalPrice = products.reduce((a,b) => {return (+a.price * a.quantity) + (+b.price * b.quantity)});
+      }else{
+        totalPrice = products[0].price * products[0].quantity;
+      }
+    }  
     res.render('shop/cart', {
       path: '/cart',
       products : products,
